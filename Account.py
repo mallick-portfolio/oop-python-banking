@@ -41,6 +41,7 @@ class SavingAccount(Account):
         if amount > 0:
             interestCal = (amount * self.interest) / 100
             self.balance += amount + interestCal
+            print(f"Amount added successfully!!!.Your current  balance {self.balance}")
         else:
             print("Negative amount is not valid!!!")
             raise ValueError
@@ -83,7 +84,7 @@ class SpecialAccount(Account):
 
     def add_money(self, amount):
         if amount > 0:
-            self.balance == amount
+            self.balance += amount
             print(
                 f"Your amount added successfull. Your current balance is {self.balance}")
         else:

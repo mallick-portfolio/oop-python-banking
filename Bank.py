@@ -27,14 +27,14 @@ class Bank:
         else:
             print(
                 f"Your {email} and {password} doesn't match with any account. Please provide valid information")
-            raise ValueError
 
 
 sonali_bank = Bank("Sonali")
 
+current_account = None
 while True:
-    current_account = None
-    if current_account is None:
+    # print("current account", current_account.account_name)
+    if current_account == None:
         option = input("Please select Login(L) or Register(R)")
         if option == "R":
             holder_name = input("Enter your name: ")
@@ -50,13 +50,14 @@ while True:
                                         account_type="saving", interest=interest, year=year_of_interest)
                 ac = sonali_bank.add_account(account)
                 current_account = ac
+                print("curr", current_account.account_type)
                 print("Your account created successfully")
             elif account_type == "SP":
                 withdray_limit = int(input("Enter the limit of withdraw: "))
-                account = SpecialAccount(
-                    holder_name, email, password, accountNo, withdray_limit, account_type="special")
+                account = SpecialAccount(holder_name, email, password, accountNo, withdray_limit=withdray_limit, account_type="special")
                 ac = sonali_bank.add_account(account)
                 current_account = ac
+                print("curr", current_account.account_type)
                 print("Your account created successfully")
         elif option == "L":
             email = input("Enter your email: ")
@@ -121,4 +122,3 @@ while True:
                 current_account.change_password(password)
             elif ch == 6:
                 current_account = None
-        
