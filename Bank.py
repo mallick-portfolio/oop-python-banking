@@ -39,7 +39,6 @@ while True:
         if option == "R":
             holder_name = input("Enter your name: ")
             email = input("Enter your email: ")
-            # password, accountNo, account_type
             password = input("Enter your password: ")
             accountNo = input("Enter your account no: ")
             account_type = input(
@@ -66,4 +65,60 @@ while True:
             current_account = ac
 
     else:
-        print("bangla")
+        if current_account.account_type == 'saving':
+            print("========= ******* =========")
+            print("1. Withdraw ")
+            print("2. Deposit ")
+            print("3. Show info ")
+            print("4. Change info ")
+            print("5. Change password ")
+            print("6. Exit ")
+            print("========= ******* =========")
+            print()
+            ch = int(input("Enter the option: "))
+            if ch == 1:
+                amount = int(input("Enter the amount: "))
+                year_of_account = int(input("Running year of your account: "))
+                current_account.withdraw_money(amount, year_of_account)
+            elif ch == 2:
+                amount = int(input("Enter the amount: "))
+                current_account.add_money(amount)
+            elif ch == 3:
+                current_account.account_info()
+            elif ch == 4:
+                name = input("Enter your new account name: ")
+                current_account.change_name(name)
+            elif ch == 5:
+                password = input("Enter your new password: ")
+                current_account.change_password(password)
+            elif ch == 6:
+                current_account = None
+
+        elif current_account.account_type == 'special':
+            print("========= ******* =========")
+            print("1. Withdraw ")
+            print("2. Deposit ")
+            print("3. Show info ")
+            print("4. Change info ")
+            print("5. Change password ")
+            print("6. Exit ")
+            print("========= ******* =========")
+            print()
+            ch = int(input("Enter the option: "))
+            if ch == 1:
+                amount = int(input("Enter the amount: "))
+                current_account.withdraw_money(amount)
+            elif ch == 2:
+                amount = int(input("Enter the amount: "))
+                current_account.add_money(amount)
+            elif ch == 3:
+                current_account.account_info()
+            elif ch == 4:
+                name = input("Enter your new account name: ")
+                current_account.change_name(name)
+            elif ch == 5:
+                password = input("Enter your new password: ")
+                current_account.change_password(password)
+            elif ch == 6:
+                current_account = None
+        
