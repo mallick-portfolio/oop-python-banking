@@ -14,6 +14,21 @@ class Bank:
             print("Your account is not valid")
             raise ValueError
 
+    def check_account(self, email, password):
+        flag = False
+        ac = None
+        for account in self.__accounts:
+            if account['email'] == email and account['password'] == password:
+                flag = True
+                ac = account
+                break
+        if flag:
+            return ac
+        else:
+            print(
+                f"Your {email} and {password} doesn't match with any account. Please provide valid information")
+            raise ValueError
+
 
 sonali_bank = Bank("Sonali")
 
@@ -43,5 +58,12 @@ while True:
                     holder_name, email, password, accountNo, withdray_limit, account_type="special")
                 ac = sonali_bank.add_account(account)
                 current_account = ac
+                print("Your account created successfully")
+        elif option == "L":
+            email = input("Enter your email: ")
+            password = input("Enter your password: ")
+            ac = sonali_bank.check_account(email, password)
+            current_account = ac
+
     else:
         print("bangla")
